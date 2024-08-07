@@ -31,7 +31,7 @@ jobs:
           npm run build
           cd src
           ls -la
-          cp -r src/Server/build src/server/ 
+          cp -r src/server/build src/Server/
         env:
           CI: false 
             
