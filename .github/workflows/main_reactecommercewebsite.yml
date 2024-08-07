@@ -29,6 +29,7 @@ jobs:
       - name: Build client
         run: |      
           npm run build       
+          cd src
           ls -la
         env:
           CI: false 
