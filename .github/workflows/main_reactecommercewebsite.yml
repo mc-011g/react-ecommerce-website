@@ -29,7 +29,7 @@ jobs:
           npm install
           cd ../../
           npm run build
-          cd src
+          cd src/server
           ls -la
           cp -r src/server/build src/Server/
         env:
