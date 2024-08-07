@@ -19,16 +19,19 @@ jobs:
         with:
           node-version: '16.x'      
 
-      - name: Install npm packages for client
+      - name: Install dependencies
         run: |          
-          npm install               
-      
-      - name: Install npm packages for server and build
-        run: |
+          ls -la
+          npm install
           cd src/Server
           npm install
+      
+      - name: Build client
+        run: |       
           cd ../../
-          npm run build           
+          ls -la
+          npm run build       
+          ls -la
         env:
           CI: false 
             
