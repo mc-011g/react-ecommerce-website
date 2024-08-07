@@ -21,16 +21,15 @@ jobs:
 
       - name: Install npm packages for client
         run: |          
-          npm install
-          ls -la          
+          npm install               
       
       - name: Install npm packages for server and build
         run: |
-          cd src/server
+          cd src/Server
           npm install
           cd ../../
           npm run build
-          rm -rdf src/server/build && mv build src/server/
+          rm -rdf src/Server/build && mv build src/Server/
             
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
