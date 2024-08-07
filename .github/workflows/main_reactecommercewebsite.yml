@@ -28,8 +28,7 @@ jobs:
           cd src/Server
           npm install
           cd ../../
-          npm run build    
-          cp -R client/build server/public
+          npm run build           
         env:
           CI: false 
             
@@ -53,6 +52,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: node-app   
+      - run: ls src/Server
       
       - name: Login to Azure
         uses: azure/login@v2
