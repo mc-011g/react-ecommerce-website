@@ -28,9 +28,7 @@ jobs:
           cd src/Server
           npm install
           cd ../../
-          npm run build
-          ls -la
-          cp -r src/server/build src/Server/
+          npm run build    
         env:
           CI: false 
             
