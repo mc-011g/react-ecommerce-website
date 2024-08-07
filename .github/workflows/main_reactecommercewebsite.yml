@@ -21,7 +21,8 @@ jobs:
 
       - name: Install npm packages for client
         run: |          
-          npm install       
+          npm install
+          ls -la          
       
       - name: Install npm packages for server and build
         run: |
