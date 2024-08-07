@@ -30,7 +30,6 @@ jobs:
         run: |      
           npm run build       
           cd src/Server
-          ls -la
         env:
           CI: false 
             
@@ -54,7 +53,6 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: node-app   
-      - run: ls src/Server
       
       - name: Login to Azure
         uses: azure/login@v2
