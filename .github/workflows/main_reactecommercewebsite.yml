@@ -29,7 +29,7 @@ jobs:
           npm install
           cd ../../
           npm run build
-          rm -rdf src/server/build && mv build src/server/
+          cp -r src/Server/build src/server/ 
         env:
           CI: false 
             
