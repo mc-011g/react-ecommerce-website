@@ -29,7 +29,6 @@ jobs:
           npm install
           cd ../../
           npm run build
-          rm -rdf src/Server/build && mv build src/Server/
             
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
