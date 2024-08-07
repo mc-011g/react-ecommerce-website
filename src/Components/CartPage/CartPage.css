@@ -1,0 +1,35 @@
+@media screen and (max-width: 992px) {
+    .summary {
+        margin-top: 1rem;
+    }
+}
+
+.cart-product-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.summary-content {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.product-change-quantity {
+    border: solid 1px black;
+    height: min-content;
+    display: inline-flex;
+}
+
+.product-img-cart {
+    width: 150px;
+    height: 150px;
+    background-color: black;
+    object-fit: cover;
+}
+
+.removeProductFromCart {
+    cursor: pointer;
+    font-size: 1.5rem;
+}

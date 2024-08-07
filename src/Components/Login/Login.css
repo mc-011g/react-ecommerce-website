@@ -1,0 +1,33 @@
+.login-btns {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.login-details {
+    margin-top: 60px;
+    min-width: 300px;
+    width: 450px;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+}
+
+.login-container h1 {
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+.bi-eye,
+.bi-eye-slash {
+    cursor: pointer;
+}
+
+.passwordVisiblityToggle {
+    right: 10px;
+}

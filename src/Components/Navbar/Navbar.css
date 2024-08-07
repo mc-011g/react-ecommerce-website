@@ -1,0 +1,93 @@
+@media screen and (max-width: 768px) {
+
+    .navbar-nav,
+    .nav-item-group {
+        align-items: start !important;
+    }
+
+    .nav-item-group {
+        flex-direction: column;
+    }
+}
+
+.navbar-collapse {
+    align-items: center;
+}
+
+.nav-item-group {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-nav {
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.nav-link {
+    font-weight: bold;
+    color: black;
+}
+
+.nav-icon {
+    font-size: 1.25rem;
+}
+
+.cartQuantity {
+    position: absolute;
+    top: 8px;
+    font-size: 13px;
+}
+
+.searchIcon {
+    cursor: pointer;
+}
+
+.searchContainer {
+    width: 100%;
+    z-index: 1021;
+    position: fixed;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.searchBar {
+    height: 80%;
+    background-color: white;
+    padding-left: 15%;
+    padding-right: 15%;
+    padding-top: 2rem;
+    overflow: hidden;
+}
+
+.closeSearchButton {
+    position: absolute;
+    right: 1rem;
+    top: 0.25rem;
+    font-size: 3rem;
+    cursor: pointer;
+}
+
+.searchButton {
+    align-content: center;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.searchInput:focus {
+    box-shadow: none;
+}
+
+.searchResults {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 15px;
+    overflow: scroll;
+    height: inherit;
+}
+
+.searchResultsProduct {
+    text-decoration: none;
+    color: black;
+}
