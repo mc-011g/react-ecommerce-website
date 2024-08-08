@@ -25,7 +25,7 @@ function App() {
 
   useEffect(() => {
     async function getRecords() {
-      const response = await fetch(`${baseURL}/record.json`);
+      const response = await fetch('./record');
       const records = await response.json();
       setRecords(records);
       return records;
