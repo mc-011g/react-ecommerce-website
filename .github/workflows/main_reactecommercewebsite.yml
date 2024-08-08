@@ -35,7 +35,9 @@ jobs:
           npm install
 
       - name: Zip artifact for deplyment
-        run: zip -r release.zip build src/Server
+        run: |
+          cd src/Server
+          zip release.zip ./* -r
             
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
