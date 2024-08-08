@@ -4,7 +4,7 @@ import { ProductContext } from "../CartContext/ProductContext.js";
 import { Link } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
 
-const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
+const stripePromise = loadStripe(`${process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY}`);
 
 const Cart = () => {
     const { cart, setCart } = useContext(ProductContext);
