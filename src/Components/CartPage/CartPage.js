@@ -4,13 +4,7 @@ import { ProductContext } from "../CartContext/ProductContext.js";
 import { Link } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
 
-const stripePublishableKey = `${process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY}`;
-
-if (!stripePublishableKey) {
-    console.error("Stripe Publishable Key is not defined");
-} else {
-    console.log(stripePublishableKey + ' -- api key');
-}
+const stripePublishableKey = process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY;
 
 const stripePromise = loadStripe(stripePublishableKey);
 
