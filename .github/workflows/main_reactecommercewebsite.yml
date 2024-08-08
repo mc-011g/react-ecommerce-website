@@ -27,6 +27,11 @@ jobs:
       - name: Build the client app
         run: npm run build
         env: 
+          REACT_APP_STRIPE_PUBLISHABLE_KEY: ${{ secrets.REACT_APP_STRIPE_PUBLISHABLE_KEY }}
+          REACT_APP_ATLAS_URI: ${{ secrets.REACT_APP_ATLAS_URI }}
+          REACT_APP_BASE_URL: ${{ secrets.REACT_APP_BASE_URL }}
+          REACT_APP_DB_NAME: ${{ secrets.REACT_APP_DB_NAME }}
+          REACT_APP_APP_ID: ${{ secrets.REACT_APP_APP_ID }}
           CI: false
 
       - name: Install server dependencies
