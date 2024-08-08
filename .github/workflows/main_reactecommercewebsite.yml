@@ -32,15 +32,15 @@ jobs:
           cd src/Server
         env:
           CI: false 
+
+      - name: Archive production artifacts
+        run: zip -r build.zip build src/Server
             
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: node-app
-          path: src/Server
-
-      - name: Archive production artifacts
-        run: zip -r build.zip src/Server
+          path: src/Server/build.zip
 
   deploy:
     runs-on: ubuntu-latest
@@ -70,5 +70,6 @@ jobs:
         with:
           app-name: 'reactecommercewebsite'
           slot-name: 'Production'
-          package: build.zip
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: src/build.zip
           
