@@ -33,10 +33,6 @@ jobs:
         run: |
           cd src/Server
           npm install
-
-      - name: Archive production artifacts
-        run: |
-          zip -r build.zip build src/Server
             
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
@@ -73,5 +69,5 @@ jobs:
           app-name: 'reactecommercewebsite'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: build.zip
+          package: src/Server
           
