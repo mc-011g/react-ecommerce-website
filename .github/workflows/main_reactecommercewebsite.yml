@@ -39,6 +39,9 @@ jobs:
           name: node-app
           path: src/Server
 
+      - name: Archive production artifacts
+        run: zip -r build.zip src/Server
+
   deploy:
     runs-on: ubuntu-latest
     needs: build
@@ -67,5 +70,5 @@ jobs:
         with:
           app-name: 'reactecommercewebsite'
           slot-name: 'Production'
-          package: node-app.zip
+          package: build.zip
           
