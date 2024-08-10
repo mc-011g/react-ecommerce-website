@@ -54,8 +54,8 @@ const Cart = () => {
                     };
                 }),
             mode: 'payment',
-            successUrl: 'https://reactecommercewebsite-g3emhzfae3dkcnfj.westus2-01.azurewebsites.net/paymentSucceeded',
-            cancelUrl: 'https://reactecommercewebsite-g3emhzfae3dkcnfj.westus2-01.azurewebsites.net/paymentCancelled'
+            successUrl: `${process.env.REACT_APP_BASE_URL}/paymentSucceeded`,
+            cancelUrl: `${process.env.REACT_APP_BASE_URL}/paymentCancelled`
         });
         if (error) {
             alert(error.message);

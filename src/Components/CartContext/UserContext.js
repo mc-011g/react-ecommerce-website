@@ -21,8 +21,8 @@ export const UserProvider = ({ children }) => {
     };
 
     const updateUserCustomData = async (firstName, lastName, phoneNumber) => {
-        const mongo = app.currentUser.mongoClient("mongodb-atlas");
-        const collection = mongo.db("ecommerce_project").collection("users");
+        const mongo = app.currentUser.mongoClient(process.env.REACT_APP_CLUSTER_NAME);
+        const collection = mongo.db(process.env.REACT_APP_DB_NAME).collection(process.env.REACT_APP_COLLECTION_NAME);
 
         await collection.updateOne(
             { _id: app.currentUser.id },

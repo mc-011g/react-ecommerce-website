@@ -28,7 +28,7 @@ const Profile = () => {
     const handleInputChange = (e) => {
         setUpdatedDetails({
             ...updatedDetails,
-            [e.target.name]: e.target.value,
+            [e.target.name]: e.target.value
         });
     };
 

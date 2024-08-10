@@ -1,1 +1,1 @@
-export const APP_ID = 'application-0-xwktvfg';
+export const APP_ID = process.env.REACT_APP_APP_ID;

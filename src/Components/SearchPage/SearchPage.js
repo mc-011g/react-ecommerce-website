@@ -21,7 +21,6 @@ const SearchPage = ({ products }) => {
     return (
         <div className="container mt-5">
             <h1>Search Results</h1>
-
             <div className="products">
                 {searchResults.length > 0 ?
                     <>
