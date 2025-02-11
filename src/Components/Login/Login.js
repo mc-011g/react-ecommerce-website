@@ -40,7 +40,8 @@ const Login = () => {
         loadUser();
     }, []);
 
-    const onSubmit = async () => {
+    const onSubmit = async (e) => {
+        e.preventDefault();
         try {
             // Validate the user's credentials
             const user = await emailPasswordLogin(form.email, form.password);
@@ -68,7 +69,7 @@ const Login = () => {
         <div className="container-sm login-container">
             <div className="login-details gap-3">
                 <h1>Login</h1>
-                <form className="d-flex flex-column gap-3">
+                <form className="d-flex flex-column gap-3 mt-3" onSubmit={(e) => onSubmit(e)}>
                     <div className="form-group d-flex flex-column gap-3">
                         <label>
                             Email
@@ -94,7 +95,7 @@ const Login = () => {
                         }
                     </div>
                     <div className="login-btns justify-content-center">
-                        <button type="button" className="btn btn-dark" onClick={onSubmit}>Login</button>
+                        <button type="submit" className="btn btn-dark">Login</button>
                         <Link to="/register">
                             <button type="button" className="btn btn-outline-dark">Create Account</button>
                         </Link>

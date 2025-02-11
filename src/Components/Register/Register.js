@@ -74,10 +74,10 @@ const Register = () => {
     }
 
     return (
-        <div className="container-sm login-container">
-            <div className="login-details gap-3">
+        <div className="container register-container">
+            <div className="register-details gap-3">
                 <h1>Create an account</h1>
-                <form className="d-flex flex-column gap-3" onSubmit={(e) => onSubmit(e)}>
+                <form className="d-flex flex-column gap-3 mt-3" onSubmit={(e) => onSubmit(e)}>
                     <div className="form-group d-flex flex-column gap-3">
                         <label>
                             First name

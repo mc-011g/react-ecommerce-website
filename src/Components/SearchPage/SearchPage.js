@@ -21,15 +21,17 @@ const SearchPage = ({ products }) => {
     return (
         <div className="container mt-5">
             <h1>Search Results</h1>
-            <div className="products">
+            <div className="products my-3">
                 {searchResults.length > 0 ?
                     <>
                         {searchResults.map((product) => (
                             <>
-                                <Link to={`/product-page/${(product._id)}`} className="product my-3">
-                                    <img src={product.imageURL} className="product-img img-fluid" alt="Product" />
-                                    <span className="product-title">{product.name}</span>
-                                    <div className="product-price">${product.price}</div>
+                                <Link to={`/product-page/${(product._id)}`} className="product">
+                                    <img src={product.imageURL} className="product-img" alt="Product" />
+                                    <div className="m-3">
+                                        <span className="product-title">{product.name}</span>
+                                        <div className="product-price">${product.price}</div>
+                                    </div>
                                 </Link>
                             </>
                         ))}

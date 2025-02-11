@@ -24,7 +24,7 @@ function App() {
   const baseURL = process.env.REACT_APP_BASE_URL;
 
   useEffect(() => {
-    async function getRecords() {
+    const getRecords = async () => {
       const response = await fetch(`${baseURL}/record`);
       const records = await response.json();
       setRecords(records);
@@ -32,7 +32,7 @@ function App() {
     }
     getRecords();
     return;
-  }, [records.length]);
+  }, [baseURL]);
 
   return (
     <>
@@ -43,6 +43,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home records={records} />} />
               <Route path="/products" element={<ProductsPage records={records} />} />
+              <Route path="/products/:specifiedCategory" element={<ProductsPage records={records} />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               {records.map(product =>

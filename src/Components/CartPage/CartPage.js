@@ -63,80 +63,89 @@ const Cart = () => {
     }
 
     return (
-        <div className="container-sm mt-5">
+        <div className="container-sm py-5">
             <div className="row">
+
                 <div className="col-lg-6">
-                    <h4 className="mb-3 fw-bold">Cart</h4>
-                    {cart.length > 0 ?
-                        <>
-                            {cart?.map((product, index) => (
-                                <div key={product._id}>
-                                    <div className={`cart-product-container ${(cart.length > 0) ? 'mb-3' : ''} `}>
-                                        <Link to={`/product-page/${product._id}`}>
-                                            <img src={product.imageURL} className="product-img-cart me-3" alt="Product" />
-                                        </Link>
-                                        <div className="d-flex w-100 flex-column justify-content-between">
-                                            <div className="d-flex flex-column w-100">
-                                                <div className="d-flex justify-content-between">
-                                                    <div><b>{product.name}</b></div>
-                                                    <div><b>${product.price * product.quantity}</b></div>
+                    <div className="cart-section">
+                        <h4 className="mb-3"><b>Cart</b> ({cart.length} items)</h4>
+                        <hr />
+                        {cart.length > 0 ?
+                            <>
+                                {cart?.map((product, index) => (
+                                    <div key={product._id}>
+                                        <div className={`cart-product-container ${(cart.length > 0) ? 'mb-3' : ''} `}>
+                                            <Link to={`/product-page/${product._id}`}>
+                                                <img src={product.imageURL} className="product-img-cart me-3" alt="Product" />
+                                            </Link>
+                                            <div className="cart-product-details">
+                                                <div className="d-flex flex-column w-100">
+                                                    <div className="d-flex justify-content-between">
+                                                        <div><b>{product.name}</b></div>
+                                                        <div><b>${product.price * product.quantity}</b></div>
+                                                    </div>
+                                                    <div>Color: {product.color}</div>
+                                                    <div>Size: {product.sizeInfo.size}</div>
+                                                    <div className="d-inline-flex">
+                                                        <div>Quantity:</div>
+                                                        <select className="form-select w-25 py-0 px-1 ms-2" value={product.quantity} onChange={(e) => handleProductQuanity(index, e.target.value)}>
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                            <option value="6">6</option>
+                                                            <option value="7">7</option>
+                                                            <option value="8">8</option>
+                                                            <option value="9">9</option>
+                                                            <option value="10">10</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
-                                                <div>Color: {product.color}</div>
-                                                <div>Size: {product.sizeInfo.size}</div>
-                                                <div className="d-inline-flex">
-                                                    <div>Quantity</div>
-                                                    <select className="form-select w-25 py-0 px-1 ms-2" value={product.quantity} onChange={(e) => handleProductQuanity(index, e.target.value)}>
-                                                        <option value="1">1</option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                        <option value="5">5</option>
-                                                        <option value="6">6</option>
-                                                        <option value="7">7</option>
-                                                        <option value="8">8</option>
-                                                        <option value="9">9</option>
-                                                        <option value="10">10</option>
-                                                    </select>
-                                                </div>
+                                                <i className="bi bi-trash removeProductFromCart" onClick={() => handleRemoveItem(product)}></i>
                                             </div>
-                                            <i className="bi bi-trash removeProductFromCart" onClick={() => handleRemoveItem(product)}></i>
                                         </div>
                                     </div>
-                                </div>
-                            ))}
-                        </> : <>There are no products in your cart.</>
-                    }
+                                ))}
+                            </> : <>There are no products in your cart.</>
+                        }
+                    </div>
                 </div>
+
                 <div className="col-lg-6 d-flex flex-column">
-                    <h4 className="mb-3 summary fw-bold">Summary</h4>
-                    <div className="summary-content">
-                        <div>Subtotal</div>
-                        <div>
-                            ${summaryInfo.subtotal}
+                    <div className="cart-section cart-section-summary">
+                        <h4 className="mb-3 summary fw-bold">Summary</h4>
+                        <hr />
+                        <div className="summary-content">
+                            <div>Subtotal:</div>
+                            <div>
+                                ${summaryInfo.subtotal}
+                            </div>
                         </div>
+                        <div className="summary-content">
+                            <div>Shipping:</div>
+                            <div>{summaryInfo.shipping === 0 ? <>Free</> : <>{summaryInfo.shipping}</>}</div>
+                        </div>
+                        <div className="summary-content">
+                            <div>Taxes:</div>
+                            0
+                        </div>
+                        <div className="summary-content fw-bold">
+                            <div>Total:</div>
+                            <div>${cart.length > 0 ? summaryInfo.subtotal + summaryInfo.taxes : 0}</div>
+                        </div>
+                        {cart.length > 0 ?
+                            <button type="button" role="link" className="btn btn-dark mt-3 w-100" onClick={handleCheckoutButtonClick}>
+                                <div>Checkout</div>
+                            </button>
+                            :
+                            <button type="button" className="btn btn-dark mt-3 w-100" disabled>
+                                <div>Checkout</div>
+                            </button>
+                        }
                     </div>
-                    <div className="summary-content">
-                        <div>Shipping</div>
-                        <div>{summaryInfo.shipping === 0 ? <>Free</> : <>$summaryInfo.shipping</>}</div>
-                    </div>
-                    <div className="summary-content">
-                        <div>Taxes</div>
-                        0
-                    </div>
-                    <div className="summary-content fw-bold">
-                        <div>Total</div>
-                        <div>${cart.length > 0 ? summaryInfo.subtotal + summaryInfo.taxes : 0}</div>
-                    </div>
-                    {cart.length > 0 ?
-                        <button type="button" role="link" className="btn btn-dark mt-3 w-100" onClick={handleCheckoutButtonClick}>
-                            <div>Checkout</div>
-                        </button>
-                        :
-                        <button type="button" className="btn btn-dark mt-3 w-100" disabled>
-                            <div>Checkout</div>
-                        </button>
-                    }
                 </div>
+
             </div>
         </div>
     );

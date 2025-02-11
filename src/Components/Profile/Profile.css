@@ -1,0 +1,7 @@
+.profile-details {
+    box-shadow: 2px 2px 5px rgb(149, 149, 149);
+    padding: 3rem;
+    width: 100%;
+    min-width: 300px;
+    max-width: 500px;
+}

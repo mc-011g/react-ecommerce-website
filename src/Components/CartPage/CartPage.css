@@ -1,12 +1,26 @@
 @media screen and (max-width: 992px) {
-    .summary {
+    .cart-section-summary {
         margin-top: 1rem;
     }
 }
 
+.cart-section {
+    box-shadow: 2px 2px 5px rgb(149, 149, 149);
+    padding: 2rem;
+    min-width: 300px;
+}
+
 .cart-product-container {
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.cart-product-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+    min-width: 200px;
 }
 
 .summary-content {
@@ -25,7 +39,7 @@
 .product-img-cart {
     width: 150px;
     height: 150px;
-    background-color: black;
+    border-radius: 16px;
     object-fit: cover;
 }
 

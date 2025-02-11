@@ -1,5 +1,6 @@
 import { useState, useContext } from "react";
 import { UserContext } from "../CartContext/UserContext";
+import './Profile.css';
 
 const Profile = () => {
     const { user, logOutUser, updateUserCustomData, sendResetPasswordLink } = useContext(UserContext);
@@ -46,18 +47,17 @@ const Profile = () => {
     return (
         <div className="container mt-5">
             <div className="d-flex justify-content-center">
-                <div className="d-flex flex-column">
-                    <h1>Hello, {user.profile.email}</h1>
-                    <h2 className="mt-5 mb-3">Account Details</h2>
+                <div className="d-flex flex-column profile-details">
+                    <h2 className="mb-3 text-center">Account Information</h2>
+                    <hr />
                     <div className="d-flex flex-column my-3 gap-3">
                         {!editMode ? (
                             <>
-                                <label>
+                                <div className="text-truncate">
                                     <b>Email:</b>
-                                    <input type="text" className="form-control"
-                                        name="email" id="email"
-                                        value={user.profile.email} disabled />
-                                </label>
+                                    <span className="ms-2">{user.profile.email}</span>
+                                </div>
+
                                 <label>
                                     <b>Phone: </b>
                                     <input type="text" className="form-control"
@@ -80,12 +80,6 @@ const Profile = () => {
                                         disabled />
                                 </label>
                                 <div className="d-inline-flex flex-row justify-content-between align-items-end">
-                                    <label>
-                                        <b>Password:</b>
-                                        <input type="password"
-                                            className="form-control" name="lastName" id="lastName"
-                                            value="password" disabled />
-                                    </label>
                                     <button type="button" className="btn btn-outline-dark"
                                         name="resetPassword" id="resetPassword" onClick={sendResetPasswordLink} >
                                         Reset Password
@@ -99,49 +93,40 @@ const Profile = () => {
                                 </button>
                             </>
                         ) : (
-                            <form className="d-flex flex-column gap-3">
-                                <label>
+                            <form className="d-flex flex-column gap-3" onSubmit={handleSubmit}>
+                                <div>
                                     <b>Email:</b>
-                                    <input type="text" className="form-control"
-                                        name="email" id="email"
-                                        value={user.profile.email} disabled />
-                                </label>
+                                    <span className="ms-2">{user.profile.email}</span>
+                                </div>
                                 <label>
                                     <b>Phone: </b>
                                     <input type="text" className="form-control"
                                         name="phone" id="phone"
                                         defaultValue={user.customData.phoneNumber}
-                                        onChange={handleInputChange} maxLength={10} />
+                                        onChange={handleInputChange} maxLength={10} required />
                                 </label>
                                 <label>
                                     <b>First name:</b>
                                     <input type="text" className="form-control"
                                         name="firstName" id="firstName"
                                         defaultValue={user.customData.firstName}
-                                        onChange={handleInputChange} />
+                                        onChange={handleInputChange} required />
                                 </label>
                                 <label>
                                     <b>Last name:</b>
                                     <input type="text" className="form-control"
                                         name="lastName" id="lastName"
                                         defaultValue={user.customData.lastName}
-                                        onChange={handleInputChange} />
+                                        onChange={handleInputChange} required />
                                 </label>
                                 <div className="d-inline-flex flex-row justify-content-between align-items-end">
-                                    <label>
-                                        <b>Password:</b>
-                                        <input type="password"
-                                            className="form-control" name="lastName" id="lastName"
-                                            value="password" disabled />
-                                    </label>
                                     <button type="button" className="btn btn-outline-dark"
                                         name="resetPassword" id="resetPassword" onClick={sendResetPasswordLink}>
                                         Reset Password
                                     </button>
                                 </div>
-                                <button type="button" className="btn btn-dark"
+                                <button type="submit" className="btn btn-dark mt-3"
                                     name="saveButton" id="saveButton"
-                                    onClick={handleSubmit}
                                 >Save</button>
                             </form>
                         )}

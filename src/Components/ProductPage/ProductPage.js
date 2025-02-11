@@ -60,53 +60,53 @@ const ProductPage = ({ products }) => {
     return (
         <div className="container-sm mt-5">
             <div className="row">
-                <div className="col-md-6">
+                <div className="col-lg-6 col-md-8">
                     <div className="mb-3 topProductInformation">
                         <h2>{product.name}</h2>
-                        <b>${product.price}</b>
+                        <h4>${product.price}</h4>
                     </div>
 
                     <div className="d-flex">
                         <div className="productExtraImages gap-2">
                             <div className="productExtraImage">
-                                <img src={product.imageURL} onMouseOver={() => changeMainProductImage(product.imageURL)} className="product-img-large rounded" alt="Product" />
+                                <img src={product.imageURL} onMouseOver={() => changeMainProductImage(product.imageURL)} className="product-img-small" alt="Product" />
                             </div>
                             <div className="productExtraImage">
-                                <img src={products[2].imageURL} onMouseOver={() => changeMainProductImage(products[2].imageURL)} className="product-img-large rounded" alt="Product" />
+                                <img src={products[2].imageURL} onMouseOver={() => changeMainProductImage(products[2].imageURL)} className="product-img-small" alt="Product" />
                             </div>
                             <div className="productExtraImage">
-                                <img src={products[3].imageURL} onMouseOver={() => changeMainProductImage(products[3].imageURL)} className="product-img-large rounded" alt="Product" />
+                                <img src={products[3].imageURL} onMouseOver={() => changeMainProductImage(products[3].imageURL)} className="product-img-small" alt="Product" />
                             </div>
                             <div className="productExtraImage">
-                                <img src={products[4].imageURL} onMouseOver={() => changeMainProductImage(products[4].imageURL)} className="product-img-large rounded" alt="Product" />
+                                <img src={products[4].imageURL} onMouseOver={() => changeMainProductImage(products[4].imageURL)} className="product-img-small" alt="Product" />
                             </div>
                             <div className="productExtraImage">
-                                <img src={products[5].imageURL} onMouseOver={() => changeMainProductImage(products[5].imageURL)} className="product-img-large rounded" alt="Product" />
+                                <img src={products[5].imageURL} onMouseOver={() => changeMainProductImage(products[5].imageURL)} className="product-img-small" alt="Product" />
                             </div>
                             <div className="productExtraImage">
-                                <img src={products[6].imageURL} onMouseOver={() => changeMainProductImage(products[6].imageURL)} className="product-img-large rounded" alt="Product" />
+                                <img src={products[6].imageURL} onMouseOver={() => changeMainProductImage(products[6].imageURL)} className="product-img-small" alt="Product" />
                             </div>
                             <div className="productExtraImage">
-                                <img src={products[7].imageURL} onMouseOver={() => changeMainProductImage(products[7].imageURL)} className="product-img-large rounded" alt="Product" />
+                                <img src={products[7].imageURL} onMouseOver={() => changeMainProductImage(products[7].imageURL)} className="product-img-small" alt="Product" />
                             </div>
                         </div>
-                        <div>
-                            <img src={mainProductImage !== '' ? mainProductImage : product.imageURL} className="product-img-large rounded" alt="Product" />
+                        <div className="">
+                            <img src={mainProductImage !== '' ? mainProductImage : product.imageURL} className="product-img-large" alt="Product" />
                         </div>
                     </div>
                 </div>
-                <div className="col-md-6 d-flex flex-column">
+                <div className="col-lg-6 col-md-4 d-flex flex-column">
                     <div className="rightProductInformation">
                         <h2>{product.name}</h2>
-                        <b>${product.price}</b>
+                        <h4>${product.price}</h4>
                     </div>
                     <div className="my-3">
                         <div className="my-3">
                             <b>Color: </b><span>{selectedProductColor}</span>
                             <div className="d-flex flex-row gap-2 mt-2">
                                 {product.colors?.map(color =>
-                                    <div className={`productExtraImage productColorSelect rounded ${selectedProductColor === color && 'border border-black'}`}>
-                                        <img src={product.imageURL} onClick={() => setSelectedProductColor(color)} className="product-img-large rounded" alt="Product" />
+                                    <div className={`productExtraImage productColorSelect ${selectedProductColor === color && 'border border-black'}`}>
+                                        <img src={product.imageURL} onClick={() => setSelectedProductColor(color)} className="product-img-small" alt="Product" />
                                     </div>
                                 )}
                             </div>
@@ -115,7 +115,7 @@ const ProductPage = ({ products }) => {
                             <b>Select size (US): </b>
                             <div className="d-flex flex-wrap gap-2 mt-2">
                                 {product.sizes?.map(product =>
-                                    <div className={`sizeBox rounded ${(selectedProductSizeInfo.size === product.size) && 'sizeBoxSelected'}`} onClick={() => setSelectedProductSizeInfo({ size: product.size, priceId: product.priceId })}>{product.size}</div>
+                                    <div className={`sizeBox ${(selectedProductSizeInfo.size === product.size) && 'sizeBoxSelected'}`} onClick={() => setSelectedProductSizeInfo({ size: product.size, priceId: product.priceId })}>{product.size}</div>
                                 )}
                             </div>
                             {sizeSelected === false &&
@@ -130,28 +130,36 @@ const ProductPage = ({ products }) => {
                     </button>
                 </div>
             </div>
-            <div className="row my-5">
+            <hr className="my-5" />
+            <div className="row">
                 <h2>Related products</h2>
-                <div className="row mt-3">
-                    <Link to={`/product-page/${products[3]._id}`} onClick={() => setMainProductImage('')} className="relatedProduct col">
-                        <img src={products[3].imageURL} className="product-img-large rounded" alt="Product" />
-                        <div className="fw-bold mt-2">
-                            <div>{products[3].name}</div>
-                            <div>${products[3].price}</div>
+                <div className="products mt-4 mb-5">
+                    <Link to={`/product-page/${products[3]._id}`} onClick={() => setMainProductImage('')} className="product">
+                        <img src={products[3].imageURL} className="product-img" alt="Product" />
+                        <div className="m-3">
+                            <div className="product-title">{products[3].name}</div>
+                            <div className="product-price">${products[3].price}</div>
                         </div>
                     </Link>
-                    <Link to={`/product-page/${products[4]._id}`} onClick={() => setMainProductImage('')} className="relatedProduct col">
-                        <img src={products[4].imageURL} className="product-img-large rounded" alt="Product" />
-                        <div className="fw-bold mt-2">
-                            <div>{products[4].name}</div>
-                            <div>${products[4].price}</div>
+                    <Link to={`/product-page/${products[4]._id}`} onClick={() => setMainProductImage('')} className="product">
+                        <img src={products[4].imageURL} className="product-img" alt="Product" />
+                        <div className="m-3">
+                            <div className="product-title">{products[4].name}</div>
+                            <div className="product-price">${products[4].price}</div>
                         </div>
                     </Link>
-                    <Link to={`/product-page/${products[5]._id}`} onClick={() => setMainProductImage('')} className="relatedProduct col">
-                        <img src={products[5].imageURL} className="product-img-large rounded" alt="Product" />
-                        <div className="fw-bold mt-2">
-                            <div>{products[5].name}</div>
-                            <div>${products[5].price}</div>
+                    <Link to={`/product-page/${products[5]._id}`} onClick={() => setMainProductImage('')} className="product">
+                        <img src={products[5].imageURL} className="product-img" alt="Product" />
+                        <div className="m-3">
+                            <div className="product-title">{products[5].name}</div>
+                            <div className="product-price">${products[5].price}</div>
+                        </div>
+                    </Link>
+                    <Link to={`/product-page/${products[6]._id}`} onClick={() => setMainProductImage('')} className="product">
+                        <img src={products[6].imageURL} className="product-img" alt="Product" />
+                        <div className="m-3">
+                            <div className="product-title">{products[6].name}</div>
+                            <div className="product-price">${products[6].price}</div>
                         </div>
                     </Link>
                 </div>
