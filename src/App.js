@@ -24,6 +24,10 @@ function App() {
   const baseURL = process.env.REACT_APP_BASE_URL;
 
   useEffect(() => {
+    document.title = "React Ecommerce Website";
+  }, []);
+
+  useEffect(() => {
     const getRecords = async () => {
       const response = await fetch(`${baseURL}/record`);
       const records = await response.json();
