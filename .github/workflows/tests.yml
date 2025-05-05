@@ -29,14 +29,16 @@ jobs:
   
       - name: Run Jest tests
         run: npm run test
+        
+      - name: Cypress run
+        uses: cypress-io/github-action@v6.5.0
+        with:
+          build: npm run build
+          start: npm run start
+          wait-on: "http://localhost:3000"
+          
 
-      - name: Install Cypress
-        run: npx cypress install
+        
 
-      - name: Wait for app to be ready on Vercel
-        run: npx wait-on https://react-ecommerce-website-navy-ten.vercel.app/ --timeout 120000
 
-      - name: Run Cypress test
-        env:
-          NEXT_PUBLIC_BASE_URL: https://react-ecommerce-website-navy-ten.vercel.app
-        run: npm run cy:run
+  
