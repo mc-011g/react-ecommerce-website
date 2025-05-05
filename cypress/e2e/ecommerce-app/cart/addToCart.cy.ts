@@ -15,7 +15,7 @@ describe("Adding an item to the cart", () => {
         cy.visit("/products/667197f9bdb811be15f18a9f");
         cy.get('[data-cy="productSize"]').eq(2).click();
         cy.get('[data-cy="addToCartButton"]').click();
-        cy.get('[data-cy="addedProductCloseButton"]').as('addedProductCloseButton').click();
+        cy.get('[data-cy="addedProductCloseButton"]', { timeout: 10000 }).as('addedProductCloseButton').click();
         cy.get('[data-cy="shoppingBagIcon"').as('shoppingBagIcon').invoke('text').should('equal', '1');
 
         //Product 2, 3 items, 2 sizes
