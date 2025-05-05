@@ -110,7 +110,7 @@ export default function ProductDetails({ initialProduct }: { initialProduct: Pro
             <div className="container mx-auto px-4 my-12">
                 {showProductAddedModal &&
                     <div className="">
-                        <div className="w-[100vw] h-[100vw] opacity-50 bg-black top-0 left-0 z-10 absolute" onClick={() => handleShowProductAddedModal(false)}></div>
+                        <div className="w-[100vw] h-[100vh] opacity-50 bg-black top-0 left-0 z-10 absolute fixed" onClick={() => handleShowProductAddedModal(false)}></div>
                         <AddedProductToCartModal
                             name={selectedProductName}
                             price={selectedProductPrice}
