@@ -1,5 +1,4 @@
 import { CartProduct } from "@/types/types";
-import debounce from "lodash.debounce";
 
 export const loadCartFromLocalStorage = () => {
     try {
@@ -12,11 +11,11 @@ export const loadCartFromLocalStorage = () => {
     }
 }
 
-export const saveCartToLocalStorage = debounce((cart: CartProduct[]) => {
+export const saveCartToLocalStorage = (cart: CartProduct[]) => {
     try {
         const cartString = JSON.stringify(cart);
         localStorage.setItem("cart", cartString);
     } catch (error) {
         console.error(error);
     }
-}, 200);
+};

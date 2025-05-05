@@ -5,6 +5,20 @@ import { CartProduct } from "../../../src/types/types";
 
 
 describe("cartSlice", () => {
+    beforeEach(() => {
+        jest.clearAllMocks();
+
+        Object.defineProperty(global, "localStorage", {
+            value: {
+                getItem: jest.fn(),
+                setItem: jest.fn(),
+                removeItem: jest.fn(),
+                clear: jest.fn(),
+            },
+            writable: true,
+        });
+    });
+
     const initialState = { value: [] };
 
     it("adds a product to the cart", () => {
