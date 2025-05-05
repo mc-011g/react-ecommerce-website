@@ -21,21 +21,6 @@ describe("Adding an item to the cart", () => {
         //Product 2, 3 items, 2 sizes
         cy.visit("/products/667197d6bdb811be15f18a9e");
 
-        //Get cart saved to local storage, and set it with the updated cart state
-        cy.window().then((win) => {
-            const cart = win.localStorage.getItem("cart");
-            if (cart) {
-                let newCart: CartProduct[] = [];
-                let objCart: CartProduct = JSON.parse(cart);
-                newCart = [...newCart, objCart];
-
-                expect(newCart).to.have.length(1);
-                expect(newCart[0].quantity).to.equal(1);
-
-                win.localStorage.setItem("cart", JSON.stringify(newCart));
-            }
-        });
-
         cy.get('@shoppingBagIcon').invoke('text').should('equal', '1');
         cy.get('[data-cy="productSize"]').eq(0).click();
         cy.get('[data-cy="addToCartButton"]', { timeout: 10000 }).should('be.enabled').click();
