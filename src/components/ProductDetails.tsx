@@ -18,6 +18,7 @@ export default function ProductDetails({ initialProduct }: { initialProduct: Pro
 
     const dispatch = useDispatch();
     const [product] = useState(initialProduct);
+
     const cart = useSelector(getCart);
 
     const [relatedProducts, setRelatedProducts] = useState<Product[]>();
@@ -58,6 +59,7 @@ export default function ProductDetails({ initialProduct }: { initialProduct: Pro
     }
 
     const handleAddProduct = (newProduct: CartProduct) => {
+
         if (!selectedProductSize) {
             setError('Please select a size.');
         } else {
@@ -68,10 +70,14 @@ export default function ProductDetails({ initialProduct }: { initialProduct: Pro
             handleShowProductAddedModal(true);
 
             dispatch(addProductToCart(newProduct));
-            const newCart = newProduct;
-            localStorage.setItem("cart", JSON.stringify(newCart));
         }
     }
+
+    useEffect(() => {
+        if (cart.length > 0) {
+            localStorage.setItem("cart", JSON.stringify(cart));
+        }
+    }, [cart]);
 
     useEffect(() => {
         if (showProductAddedModal) {
