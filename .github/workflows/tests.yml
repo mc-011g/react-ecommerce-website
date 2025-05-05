@@ -3,7 +3,7 @@ name: Jest and Cypress Tests
 on:
     push:
       branches:
-        - nextjs-version
+        - main 
     workflow_dispatch:
 
 jobs:
