@@ -1,0 +1,44 @@
+name: Jest and Cypress Tests
+
+on:
+    push:
+      branches:
+        - nextjs-version
+    workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js version
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20.x'     
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Jest tests
+        run: npm run test  
+        
+      - name: Cypress run
+        uses: cypress-io/github-action@v6.5.0
+        with:  
+          build: npm run build
+          start: npm run start
+          wait-on: "http://localhost:3000"
+        env:
+          NEXT_PUBLIC_BASE_URL: ${{ secrets.NEXT_PUBLIC_BASE_URL }}
+          ATLAS_URI: ${{ secrets.ATLAS_URI }}
+          MOCK_TOKEN_VERIFIED: ${{ secrets.MOCK_TOKEN_VERIFIED }}
+          MOCK_TOKEN_UNVERIFIED: ${{ secrets.MOCK_TOKEN_UNVERIFIED }}
+          DB_COLLECTION_NAME: ${{ secrets.DB_COLLECTION_NAME }}
+          APP_ID: ${{ secrets.APP_ID }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
+          DB_NAME: ${{ secrets.DB_NAME }}
+          PEPPER_STRING: ${{ secrets.PEPPER_STRING }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY }}
