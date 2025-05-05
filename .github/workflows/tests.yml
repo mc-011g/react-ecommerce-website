@@ -34,3 +34,5 @@ jobs:
           JWT_SECRET: ${{ secrets.JWT_SECRET }}
           DB_NAME: ${{ secrets.DB_NAME }}
           PEPPER_STRING: ${{ secrets.PEPPER_STRING }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY }}
