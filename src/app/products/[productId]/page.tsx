@@ -3,6 +3,8 @@ import ProductDetails from "@/components/ProductDetails";
 import { notFound } from "next/navigation";
 import { Product } from "@/types/types";
 
+export const dynamic = 'force-dynamic';
+
 type Params = {
     productId: string;
 }

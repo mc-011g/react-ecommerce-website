@@ -2,6 +2,7 @@ import { fetchProducts } from "@/util/fetchProducts";
 import ProductsList from "@/components/ProductsList";
 import { Product } from "@/types/types";
 
+export const dynamic = 'force-dynamic';
 
 export default async function ProductsPage() {
 

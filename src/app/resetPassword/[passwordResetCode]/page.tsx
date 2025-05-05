@@ -10,6 +10,8 @@ import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 import { useParams } from "next/navigation";
 import { useState } from "react";
 
+export const dynamic = 'force-dynamic';
+
 export default function ResetPassword() {
 
     const { passwordResetCode } = useParams() as { passwordResetCode: string };

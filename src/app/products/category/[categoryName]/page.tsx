@@ -3,6 +3,8 @@ import { Product } from "@/types/types";
 import { fetchCategoryProducts } from "@/util/fetchCategoryProducts";
 import { notFound } from "next/navigation";
 
+export const dynamic = 'force-dynamic';
+
 type Params = {
     categoryName: string;
 }

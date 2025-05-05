@@ -8,6 +8,8 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
+export const dynamic = 'force-dynamic';
+
 export default function VerifyEmailLandingPage() {
 
     const { verificationString } = useParams() as { verificationString: string };
