@@ -1,0 +1,40 @@
+name: Jest and Cypress Tests
+
+on:
+    push:
+      branches:
+        - nextjs-version
+    workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js version
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20.x'
+          
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the app
+        run: npm run build
+
+      - name: Start the app and proceed to next steps
+        run: npm start &
+  
+      - name: Run Jest tests
+        run: npm run test
+
+      - name: Install Cypress
+        run: npx cypress install
+
+      - name: Wait for app to be ready
+        run: npx wait-on http://localhost:3000 --timeout 60000
+
+      - name: Run Cypress test
+        run: npm run cy:run
