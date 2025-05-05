@@ -16,23 +16,13 @@ jobs:
       - name: Set up Node.js version
         uses: actions/setup-node@v3
         with:
-          node-version: '20.x'
-          
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build the app
-        run: npm run build
-
-      - name: Start the app and proceed to next steps
-        run: npm start &
-  
-      - name: Run Jest tests
-        run: npm run test
+          node-version: '20.x'          
         
       - name: Cypress run
         uses: cypress-io/github-action@v6.5.0
         with:  
+          build: npm run build
+          start: npm run start
           wait-on: "http://localhost:3000"
           
 
