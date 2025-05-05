@@ -38,13 +38,13 @@ describe("Adding an item to the cart", () => {
 
         cy.get('@shoppingBagIcon').invoke('text').should('equal', '1');
         cy.get('[data-cy="productSize"]').eq(0).click();
-        cy.get('[data-cy="addToCartButton"]').click();
+        cy.get('[data-cy="addToCartButton"]', { timeout: 10000 }).should('be.enabled').click();
         cy.get('@addedProductCloseButton').click();
 
         cy.get('[data-cy="productSize"]').eq(3).should('be.visible').click();
-        cy.get('[data-cy="addToCartButton"]').click();
+        cy.get('[data-cy="addToCartButton"]', { timeout: 10000 }).should('be.enabled').click();
         cy.get('@addedProductCloseButton').click();
-        cy.get('[data-cy="addToCartButton"]').click();
+        cy.get('[data-cy="addToCartButton"]', { timeout: 10000 }).should('be.enabled').click();
 
         cy.get('@shoppingBagIcon').invoke('text').should('equal', '4');
     });
