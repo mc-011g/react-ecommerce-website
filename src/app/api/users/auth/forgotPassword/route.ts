@@ -35,7 +35,7 @@ export async function POST(request: Request) {
         try {
             await sendEmail({
                 to: email,
-                from: "Test <onboarding@resend.dev>",
+                from: "matthew@matthewcarmichael.pro",
                 subject: "Forgot password reset",
                 firstName,
                 message: `Please go to this link to reset your password: ${process.env.NEXT_PUBLIC_BASE_URL}/resetPassword/${passwordResetCode}`,

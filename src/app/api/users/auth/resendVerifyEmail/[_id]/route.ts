@@ -41,7 +41,7 @@ export async function PUT(request: Request, { params }: { params: Promise<Params
         try {
             await sendEmail({
                 to: email,
-                from: "Test <onboarding@resend.dev>",
+                from: "matthew@matthewcarmichael.pro",
                 subject: "Verify your email",
                 firstName,
                 message: `Please verify your email by clicking on this link: ${process.env.NEXT_PUBLIC_BASE_URL}/verifyEmail/${verificationString}`,

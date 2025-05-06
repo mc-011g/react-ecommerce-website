@@ -52,7 +52,7 @@ export async function POST(request: Request) {
         try {
             await sendEmail({
                 to: email,
-                from: "Test <onboarding@resend.dev>",
+                from: "matthew@matthewcarmichael.pro",
                 subject: "Verify your email",
                 firstName,
                 message: `Thank you for registering. Please verify your email by clicking on this link: ${process.env.NEXT_PUBLIC_BASE_URL}/verifyEmail/${verificationString}`,
